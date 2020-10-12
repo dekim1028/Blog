@@ -10,11 +10,11 @@ import PostWritePage from './pages/PostWritePage';
 const App = () => {
   return (
     <>
-      <Route component={PostListPage} path={["/@:username","/"]}></Route>
-      <Route component={LoginPage} path="/login"></Route>
-      <Route component={SignUpPage} path="/signup"></Route>
-      <Route component={PostViewPage} path="/@:username/:postId"></Route>
-      <Route component={PostWritePage} path="/write"></Route>
+      <Route component={PostListPage} path={["/@:username","/"]} exact/>
+      <Route component={LoginPage} path="/login"/>
+      <Route component={SignUpPage} path="/signup"/>
+      <Route component={PostViewPage} path="/@:username/:postId"/>
+      <Route component={PostWritePage} path="/write"/>
     </>
   );
 };
