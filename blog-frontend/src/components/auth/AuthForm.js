@@ -22,23 +22,19 @@ const AuthFooter = styled.div`
     }
 `;
 
-const onSubmit = e =>{
-    e.preventDefault();
-}
-
-const AuthForm = ({type}) => {
+const AuthForm = ({type, form, onChange, onSubmit}) => {
     return (
         <div className="AuthForm">
             <h1 className="type_text">
                 {type==='login'?'로그인':'회원가입'}
             </h1>
-            <form>
-                <InputBox name="id" type="text" placeholder="아이디"/>
-                <InputBox name="password" type="password" placeholder="패스워드"/>
+            <form onSubmit={onSubmit}>
+                <InputBox name="id" type="text" placeholder="아이디" value={form.id} onChange={onChange}/>
+                <InputBox name="password" type="password" placeholder="패스워드" value={form.password} onChange={onChange}/>
                 {type==='signup'&&(
-                    <InputBox name="passwordConfirm" type="password" placeholder="패스워드 확인"/>
+                    <InputBox name="passwordConfirm" type="password" placeholder="패스워드 확인" value={form.passwordConfirm} onChange={onChange}/>
                 )}
-                <button className="type_btn" onSubmit={onSubmit}>
+                <button className="type_btn">
                     {type==='login'?'로그인':'회원가입'}
                 </button>
             </form>
