@@ -29,7 +29,7 @@ const AuthForm = ({type, form, onChange, onSubmit}) => {
                 {type==='login'?'로그인':'회원가입'}
             </h1>
             <form onSubmit={onSubmit}>
-                <InputBox name="id" type="text" placeholder="아이디" value={form.id} onChange={onChange}/>
+                <InputBox name="userid" type="text" placeholder="아이디" value={form.userid} onChange={onChange}/>
                 <InputBox name="password" type="password" placeholder="패스워드" value={form.password} onChange={onChange}/>
                 {type==='signup'&&(
                     <InputBox name="passwordConfirm" type="password" placeholder="패스워드 확인" value={form.passwordConfirm} onChange={onChange}/>

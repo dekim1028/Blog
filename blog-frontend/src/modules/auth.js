@@ -17,11 +17,11 @@ export const initializeForm = createAction(INITIALIZE_FORM,form=>form);
 
 const initialState ={
     login:{
-        id:'',
+        userid:'',
         password:''
     },
     signup:{
-        id:'',
+        userid:'',
         password:'',
         passwordConfirm:''
     }

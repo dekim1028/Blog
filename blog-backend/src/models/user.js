@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 const UserSchema = new Schema({
-    username:String,
+    userid:String,
     hashedPassword:String,
 });
 
@@ -17,8 +17,8 @@ UserSchema.methods.checkPassword = async function(password){
     return result;
 }
 
-UserSchema.statics.findByUsername = function(username){
-    return this.findOne({username});
+UserSchema.statics.findByUserId = function(userid){
+    return this.findOne({userid});
 }
 
 UserSchema.methods.serialize = function(){
@@ -32,7 +32,7 @@ UserSchema.methods.generateToken = function(){
         //첫번째 파라미터에는 토큰안에 집어넣고 싶은 데이터를 넣습니다.
         {
             _id:this.id,
-            username:this.username,
+            userid:this.userid,
         },
         process.env.JWT_SECRET, //두번째 파라미터에는 JWT암호를 넣습니다.
         {
