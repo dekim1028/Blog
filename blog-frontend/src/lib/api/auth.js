@@ -4,8 +4,8 @@ export const login = ({userid,password})=>
     client.post("/api/auth/login",{userid,password});
 
 
-export const signup = ({userid,password})=>
-    client.post("/api/auth/signup",{userid,password});
+export const signup = ({userid,password,username})=>
+    client.post("/api/auth/signup",{userid,password,username});
 
 
 export const check = () =>

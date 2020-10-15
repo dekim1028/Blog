@@ -34,6 +34,9 @@ const AuthForm = ({type, form, onChange, onSubmit}) => {
                 {type==='signup'&&(
                     <InputBox name="passwordConfirm" type="password" placeholder="패스워드 확인" value={form.passwordConfirm} onChange={onChange}/>
                 )}
+                {type==='signup'&&(
+                    <InputBox name="username" type="text" placeholder="이름" value={form.username} onChange={onChange}/>
+                )}
                 <button className="type_btn">
                     {type==='login'?'로그인':'회원가입'}
                 </button>

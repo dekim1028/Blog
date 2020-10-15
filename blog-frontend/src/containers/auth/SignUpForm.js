@@ -2,15 +2,18 @@ import React from 'react';
 import AuthForm from '../../components/auth/AuthForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, signup } from '../../modules/auth';
+import { check } from '../../modules/user';
 import { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 
-const SignUpForm = () => {
+const SignUpForm = ({history}) => {
     const dispatch = useDispatch();
 
-    const {form, auth, authError} = useSelector(({auth})=>({
+    const {form, auth, authError, user} = useSelector(({auth, user})=>({
         form:auth.signup,
         auth:auth.auth,
-        authError:auth.authError
+        authError:auth.authError,
+        user:user.user,
     }));
 
     const onChange = e =>{
@@ -26,12 +29,12 @@ const SignUpForm = () => {
 
     const onSubmit = e =>{
         e.preventDefault();
-        const {userid,password,passwordConfirm} = form;
+        const {userid,password,passwordConfirm,username} = form;
         if(password!==passwordConfirm){
             //TODO:오류처리
             return;
         }
-        dispatch(signup({userid,password}));
+        dispatch(signup({userid,password,username}));
     };
 
     useEffect(()=>{
@@ -44,10 +47,17 @@ const SignUpForm = () => {
             console.log(authError);
         }
         if(auth){
-            console.log("회원사입 성공");
+            console.log("회원가입 성공");
             console.log(auth);
+            dispatch(check());
         }
-    },[auth,authError]);
+    },[auth,authError,dispatch]);
+
+    useEffect(()=>{
+        if(user){
+            history.push("/");
+        }
+    },[history,user]);
 
     return (
         <AuthForm
@@ -59,4 +69,4 @@ const SignUpForm = () => {
     );
 };
 
-export default SignUpForm;
+export default withRouter(SignUpForm);

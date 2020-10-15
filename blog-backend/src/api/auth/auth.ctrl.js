@@ -17,6 +17,7 @@ export const signup = async ctx =>{
             .max(20)
             .required(),
         password:Joi.string().required(),
+        username:Joi.string().required(),
     });
     const result = schema.validate(ctx.request.body);
     if(result.error){
@@ -25,7 +26,7 @@ export const signup = async ctx =>{
         return;
     }
 
-    const {userid,password} = ctx.request.body;
+    const {userid,password,username} = ctx.request.body;
     try{
         //userid이 이미 존재하는지 확인
         const exists = await User.findByUserId(userid);
@@ -36,6 +37,7 @@ export const signup = async ctx =>{
 
         const user = new User({
             userid,
+            username,
         });
         await user.setPassword(password);
         await user.save(); //데이터베이스에 저장

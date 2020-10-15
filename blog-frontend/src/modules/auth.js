@@ -21,9 +21,10 @@ export const changeField = createAction(
 
 export const initializeForm = createAction(INITIALIZE_FORM,form=>form);
 
-export const signup = createAction(SIGNUP,({userid,password})=>({
+export const signup = createAction(SIGNUP,({userid,password,username})=>({
     userid,
-    password
+    password,
+    username
 }));
 
 export const login = createAction(LOGIN,({userid,password})=>({
@@ -48,7 +49,8 @@ const initialState ={
     signup:{
         userid:'',
         password:'',
-        passwordConfirm:''
+        passwordConfirm:'',
+        username:'',
     },
     auth:null,
     authError:null
