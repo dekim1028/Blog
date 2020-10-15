@@ -22,7 +22,13 @@ const AuthFooter = styled.div`
     }
 `;
 
-const AuthForm = ({type, form, onChange, onSubmit}) => {
+const ErrorBox = styled.div`
+    color:red;
+    font-size: 13px;
+    margin-bottom: 10px;
+`;
+
+const AuthForm = ({type, form, onChange, onSubmit, error}) => {
     return (
         <div className="AuthForm">
             <h1 className="type_text">
@@ -37,6 +43,7 @@ const AuthForm = ({type, form, onChange, onSubmit}) => {
                 {type==='signup'&&(
                     <InputBox name="username" type="text" placeholder="이름" value={form.username} onChange={onChange}/>
                 )}
+                {error&&<ErrorBox>{error}</ErrorBox>}
                 <button className="type_btn">
                     {type==='login'?'로그인':'회원가입'}
                 </button>

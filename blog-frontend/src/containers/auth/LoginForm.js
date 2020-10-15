@@ -1,12 +1,12 @@
-import React from 'react';
-import AuthForm from '../../components/auth/AuthForm';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import AuthForm from '../../components/auth/AuthForm';
 import { changeField, initializeForm, login } from '../../modules/auth';
 import { check } from '../../modules/user';
-import { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 const LoginForm = ({history}) => {
+    const [error, setError] = useState('');
     const dispatch = useDispatch();
 
     const {form, auth, authError, user} = useSelector(({auth,user})=>({
@@ -41,8 +41,7 @@ const LoginForm = ({history}) => {
 
     useEffect(()=>{
         if(authError){
-            console.log("오류발생");
-            console.log(authError);
+            setError("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
             return;
         }
         if(auth){
@@ -64,6 +63,7 @@ const LoginForm = ({history}) => {
             form={form}
             onChange={onChange}
             onSubmit={onSubmit}
+            error={error}
         />
     );
 };
