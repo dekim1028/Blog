@@ -27,15 +27,22 @@ const Spacer = styled.div`
     height: 60px;
 `
 
-const Header = () => {
+const Header = ({user}) => {
     return (
         <>
             <HeaderBlock>
                 <Wrapper>
                     <div className="logo">
-                        .log
+                        {user.username}.log
                     </div>
-                    <Button to="/login">로그인</Button>
+                    {
+                        user?(
+                            <Button>로그아웃</Button>
+                        ):(
+                            <Button to="/login">로그인</Button>
+                        )
+                    }
+                    
                 </Wrapper>
             </HeaderBlock>
             <Spacer/>
