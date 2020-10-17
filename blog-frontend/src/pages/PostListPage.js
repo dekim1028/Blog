@@ -1,10 +1,13 @@
 import React from 'react';
+import Responsive from '../components/common/Responsive';
+import Header from '../components/common/Header';
 
 const PostListPage = () => {
     return (
-        <div>
+        <>
+            <Header/>
             포스트 리스트
-        </div>
+        </>
     );
 };
 

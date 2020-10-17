@@ -1,7 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../styles/css/auth/AuthForm.scss';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import Button from '../common/Button';
+
+const AuthFormBlock = styled.div`
+    padding: 20px 40px 0;
+    .type_text{
+        font-size: 20px;
+        text-align: left;
+    }
+`;
 
 const InputBox = styled.input`
     width: 100%;
@@ -30,7 +39,7 @@ const ErrorBox = styled.div`
 
 const AuthForm = ({type, form, onChange, onSubmit, error}) => {
     return (
-        <div className="AuthForm">
+        <AuthFormBlock>
             <h1 className="type_text">
                 {type==='login'?'로그인':'회원가입'}
             </h1>
@@ -44,9 +53,9 @@ const AuthForm = ({type, form, onChange, onSubmit, error}) => {
                     <InputBox name="username" type="text" placeholder="이름" value={form.username} onChange={onChange}/>
                 )}
                 {error&&<ErrorBox>{error}</ErrorBox>}
-                <button className="type_btn">
+                <Button width="100%" height="40px">
                     {type==='login'?'로그인':'회원가입'}
-                </button>
+                </Button>
             </form>
             <AuthFooter>
                 {type==='login'?
@@ -54,9 +63,8 @@ const AuthForm = ({type, form, onChange, onSubmit, error}) => {
                     :
                     (<Link to="/login">로그인</Link>)
                 }
-                
             </AuthFooter>
-        </div>
+        </AuthFormBlock>
     );
 };
 
