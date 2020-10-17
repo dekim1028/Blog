@@ -8,7 +8,12 @@ const ButtonStyle = css`
     color:white;
     border-radius: 4px;
     font-weight: bold;
-    padding: 8px 18px;
+    font-size: 15px;
+    width: 90px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover{
         background-color: #0174DF;

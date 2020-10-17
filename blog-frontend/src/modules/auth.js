@@ -10,6 +10,7 @@ const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 const [SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAILURE] = createRequestActionTypes('auth/SIGNUP');
 const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes('auth/LOGIN');
 
+
 export const changeField = createAction(
     CHANGE_FIELD,
     ({form,key,value})=>({
@@ -84,7 +85,7 @@ const auth = handleActions(
         [LOGIN_FAILURE]:(state,{payload:error})=>({
             ...state,
             authError:error,
-        }),
+        })
     },
     initialState
 )
