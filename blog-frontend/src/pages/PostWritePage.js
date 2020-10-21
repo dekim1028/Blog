@@ -1,10 +1,17 @@
 import React from 'react';
+import Responsive from '../components/common/Responsive';
+import Editor from '../components/write/Editor';
+import TagBox from '../components/write/TagBox';
 
 const PostWritePage = () => {
+
+     
+
     return (
-        <div>
-            포스트 작성
-        </div>
+        <Responsive>
+            <Editor/>
+            <TagBox/>
+        </Responsive>
     );
 };
 
