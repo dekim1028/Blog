@@ -1,8 +1,8 @@
 import React from 'react';
 import Responsive from '../components/common/Responsive';
 import EditorContainer from '../containers/write/EditorContainer';
-import WriteActionButton from '../components/write/WriteActionButton';
 import TagBoxContainer from '../containers/write/TagBoxContainer';
+import WriteActionButtonContainer from '../containers/write/WriteActionButtonContainer';
 
 const PostWritePage = () => {
 
@@ -12,7 +12,7 @@ const PostWritePage = () => {
         <Responsive>
             <EditorContainer/>
             <TagBoxContainer/>
-            <WriteActionButton/>
+            <WriteActionButtonContainer/>
         </Responsive>
     );
 };
