@@ -6,7 +6,7 @@ const HeaderBlock = styled.div`
     position:fixed;
     width:100%;
     background-color:white;
-    box-shadow: 0px 1px 3px rgb(0,0,0,0.7);
+    box-shadow: 0px 1px 3px rgb(0,0,0,0.2);
 `;
 
 const Wrapper = styled.div`
