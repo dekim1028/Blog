@@ -1,7 +1,8 @@
 import React,{ useCallback } from 'react';
 import Editor from '../../components/write/Editor';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeField } from '../../modules/write';
+import { changeField, initialize } from '../../modules/write';
+import { useEffect } from 'react';
 
 const EditorContainer = () => {
     const dispatch = useDispatch();
@@ -12,6 +13,10 @@ const EditorContainer = () => {
 
     const onChange = useCallback(payload=>{
         dispatch(changeField(payload));
+    },[dispatch]);
+
+    useEffect(()=>{
+        dispatch(initialize());
     },[dispatch]);
 
     return (
