@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom';
 const ButtonStyle = css`
     background-color:#045FB4;
     border:none;
+    outline:none;
+    cursor: pointer;
     color:white;
     border-radius: 4px;
     font-weight: bold;
@@ -24,12 +26,20 @@ const ButtonBlock = styled.button`
     ${ButtonStyle}
 
     ${props=>
+        props.color1&&
+        css`
+            background:#585858;
+            &:hover{
+                background:#848484;
+            }
+        `
+    }
+    ${props=>
         props.width&&
         css`
             width:${props.width};
         `
     }
-
     ${props=>
         props.height&&
         css`

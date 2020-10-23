@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 import { useCallback } from 'react';
 
@@ -19,6 +19,7 @@ const TagForm = styled.form`
         color: white;
         padding:5px 15px;
         font-weight:bold;
+        cursor: pointer;
     }
 
     button:hover{
@@ -47,29 +48,37 @@ const TagListItem = styled.div`
     }
 `;
 
-const TagBox = () => {
+const TagBox = ({onChangeTags, tags}) => {
     const [input,setInput] = useState('');
     const [localTags,setLocalTags] = useState([]);
 
-    const insertTag = tag =>{
+    const insertTag = useCallback(tag =>{
         if(!tag) return;
         if(localTags.includes(tag)) return;
-        setLocalTags([...localTags,tag]);
-    }
+        const newTags = [...localTags,tag];
+        setLocalTags(newTags);
+        onChangeTags(newTags);
+    },[localTags,onChangeTags]);
 
     const onChange = useCallback(e=>{
         setInput(e.target.value);
-    },[])
+    },[]);
 
-    const onSubmit = e =>{
+    const onSubmit = useCallback(e =>{
         e.preventDefault();
         insertTag(input.trim());
         setInput('');
-    }
+    },[input,insertTag]);
 
-    const onRemove = target =>{
-        setLocalTags(localTags.filter(tag=>target!==tag));
-    }
+    const onRemove = useCallback(target =>{
+        const newTags = localTags.filter(tag=>target!==tag);
+        setLocalTags(newTags);
+        onChangeTags(newTags);
+    },[localTags,onChangeTags]);
+
+    useEffect(()=>{
+        setLocalTags(tags);
+    },[tags]);
 
     return (
         <TagBoxBlock>
