@@ -11,7 +11,7 @@ const ResponsiveBlock = styled.div`
         width:768px;
     }
 
-    @media (min-width:768px){
+    @media (max-width:768px){
         width:100%;
     }
 `;
