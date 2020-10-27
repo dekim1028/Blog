@@ -14,8 +14,25 @@ const PostHeader = styled.div`
         text-align: right;
     }
 `;
-const PostBody = styled.div``;
-const PostFooter = styled.div``;
+const PostBody = styled.div`
+    min-height:400px;
+`;
+const PostFooter = styled.div`
+    .tagList{
+        list-style: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+    .tagItem{
+        color:#045FB4;
+        padding:0 5px;
+
+        &:hover{
+            color:#0174DF;
+        }
+    }
+`;
 
 const PostView = ({post,error,loading}) => {
 
@@ -39,8 +56,8 @@ const PostView = ({post,error,loading}) => {
             </PostHeader>
             <PostBody dangerouslySetInnerHTML={{__html:body}}/>
             <PostFooter>
-                <ul>
-                    {tags.map(tag=>(<li key={tag} tag={tag}>{tag}</li>))}
+                <ul className="tagList">
+                    {tags.map(tag=>(<li className="tagItem" key={tag} tag={tag}>#{tag}</li>))}
                 </ul>
             </PostFooter>
         </PostViewBlock>
