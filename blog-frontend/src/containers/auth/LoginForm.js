@@ -53,6 +53,7 @@ const LoginForm = ({history}) => {
     useEffect(()=>{
         if(user){
             console.log("CHECK api 성공");
+            alert(`${user.username}님 안녕하세요!`);
             history.push("/");
             try{
                 localStorage.setItem("user",JSON.stringify(user));

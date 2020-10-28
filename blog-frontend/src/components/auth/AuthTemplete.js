@@ -30,7 +30,7 @@ const AuthTemplete = ({children}) => {
     return (
         <AuthTempleteBlock>
             <WhiteBox>
-                <Logo>Daeun.log</Logo>
+                <Logo>My.log</Logo>
                 {children}
             </WhiteBox>
         </AuthTempleteBlock>
