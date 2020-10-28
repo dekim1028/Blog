@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import { Link } from 'react-router-dom';
 
 const HeaderBlock = styled.div`
     position:fixed;
@@ -32,9 +33,9 @@ const Header = ({user,onLogout}) => {
         <>
             <HeaderBlock>
                 <Wrapper>
-                    <div className="logo">
+                    <Link className="logo" to="/">
                         {user?user.username:"My"}.log
-                    </div>
+                    </Link>
                     {
                         user?(
                             <Button onClick={onLogout}>로그아웃</Button>
