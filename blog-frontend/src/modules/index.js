@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     loading,
     user,
     write,
-    view
+    view,
 });
 
 export function* rootSaga(){
