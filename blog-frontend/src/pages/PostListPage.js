@@ -1,14 +1,14 @@
 import React from 'react';
 import HeaderContainer from '../containers/common/HeaderContainer';
 import Responsive from '../components/common/Responsive';
-import PostList from '../components/List/PostList';
+import PostListContainer from '../containers/list/PostListContainer';
 
 const PostListPage = () => {
     return (
         <>
             <HeaderContainer/>
             <Responsive>
-                <PostList/>
+                <PostListContainer/>
             </Responsive>
         </>
     );

@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '../common/Button';
 import styled from 'styled-components';
-import { useEffect } from 'react';
 
 const PostListBlock = styled.div`
     padding: 60px 0;
@@ -15,12 +14,14 @@ const ButtonBlock = styled.div`
 `;
 
 const PostItemList = styled.ul`
-        list-style: none;
+    list-style: none;
+    margin: 0;
 `;
 
-const PostItem = styled.li`
+const PostItemBlock = styled.li`
+    padding:60px 0;
     &+&{
-        margin-top: 50px;
+        border-top:1px solid #F2F2F2;
     }
 `;
 
@@ -35,18 +36,39 @@ const PostSubject = styled.h2`
 
 const PostBody = styled.div``;
 
-const PostList = () => {
+const PostItem = ({post}) => {
+    return(
+        <PostItemBlock>
+            <PostInfo>{new Date(post.publishedData).toLocaleDateString()}</PostInfo>
+            <PostSubject>{post.title}</PostSubject>
+            <PostBody>{post.body}</PostBody>
+        </PostItemBlock>
+    );
+}
+
+const PostList = ({posts,error,loading,showWriteButton}) => {
+
+    if(error){
+        return <PostListBlock>에러발생</PostListBlock>;
+    }
+
+    if(loading || !posts){
+        return null;
+    }
+
     return (
         <PostListBlock>
-            <ButtonBlock>
-                <Button to="/write">기록하기</Button>
-            </ButtonBlock>
+            {showWriteButton&&
+            (
+                <ButtonBlock>
+                    <Button to="/write">기록하기</Button>
+                </ButtonBlock>
+            )}
+            
             <PostItemList>
-                <PostItem>
-                    <PostInfo><b>test</b> | 2020.02.03</PostInfo>
-                    <PostSubject>제목입니다.</PostSubject>
-                    <PostBody>내용이야아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ내용이야아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</PostBody>
-                </PostItem>
+                {
+                    posts.map(post=>(<PostItem post={post}/>))
+                }
             </PostItemList>
         </PostListBlock>
     );
