@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../common/Button';
 import styled from 'styled-components';
+import Tag from './Tag';
 
 const PostListBlock = styled.div`
     padding: 60px 0;
@@ -40,6 +41,7 @@ const PostItem = ({post}) => {
     return(
         <PostItemBlock>
             <PostInfo>{new Date(post.publishedData).toLocaleDateString()}</PostInfo>
+            <Tag key={`tag_${post.id}`} tags={post.tags}/>
             <PostSubject>{post.title}</PostSubject>
             <PostBody>{post.body}</PostBody>
         </PostItemBlock>
@@ -67,7 +69,7 @@ const PostList = ({posts,error,loading,showWriteButton}) => {
             
             <PostItemList>
                 {
-                    posts.map(post=>(<PostItem post={post}/>))
+                    posts.map(post=>(<PostItem key={post._id} post={post}/>))
                 }
             </PostItemList>
         </PostListBlock>
