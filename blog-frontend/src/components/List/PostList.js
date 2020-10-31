@@ -3,9 +3,11 @@ import Button from '../common/Button';
 import styled from 'styled-components';
 import Tag from './Tag';
 import { Link } from 'react-router-dom';
+import NoData from './NoData';
 
 const PostListBlock = styled.div`
     padding-top: 30px;
+    min-height:700px;
 `;
 
 const ButtonBlock = styled.div`
@@ -68,6 +70,8 @@ const PostList = ({posts,error,loading,showWriteButton}) => {
 
     if(loading || !posts){
         return null;
+    }else if(posts.length<=0){
+        return <NoData showWriteButton={showWriteButton}/>;
     }
 
     return (
@@ -78,7 +82,6 @@ const PostList = ({posts,error,loading,showWriteButton}) => {
                     <Button to="/write">기록하기</Button>
                 </ButtonBlock>
             )}
-            
             <PostItemList>
                 {
                     posts.map(post=>(<PostItem key={post._id} post={post}/>))
