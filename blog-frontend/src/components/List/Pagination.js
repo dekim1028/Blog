@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
 import qs from 'qs';
@@ -20,6 +20,8 @@ const Pagination = ({lastPage,userid,tag,page}) => {
         const query = qs.stringify({tag,page});
         return userid?`/@${userid}?${query}`:`/?${query}`;
     };
+
+    if(lastPage===0) return null;
 
     return (
         <PaginationBlock>
