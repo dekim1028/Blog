@@ -20,6 +20,11 @@ const ButtonStyle = css`
     &:hover{
         background-color: #0174DF;
     }
+
+    &:disabled{
+        background: #A4A4A4;
+        cursor:not-allowed;
+    }
 `;
 
 const ButtonBlock = styled.button`

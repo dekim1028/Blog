@@ -19,12 +19,14 @@ export function* listSaga(){
 const initialState = {
     posts:null,
     error:null,
+    lastPage:1,
 };
 
 const list = handleActions({
-    [LIST_POST_SUCCESS]:(state,{payload:posts})=>({
+    [LIST_POST_SUCCESS]:(state,{payload:posts,meta:response})=>({
         ...state,
-        posts
+        posts,
+        lastPage:parseInt(response.headers['last-page'],10),
     }),
     [LIST_POST_FAILURE]:(state,{payload:error})=>({
         ...state,

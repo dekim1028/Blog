@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Tag from './Tag';
 
 const PostListBlock = styled.div`
-    padding: 60px 0;
+    padding-top: 30px;
 `;
 
 const ButtonBlock = styled.div`
@@ -20,7 +20,12 @@ const PostItemList = styled.ul`
 `;
 
 const PostItemBlock = styled.li`
-    padding:60px 0;
+    padding:50px 0;
+
+    &:first-child{
+        padding-top:30px;
+    }
+
     &+&{
         border-top:1px solid #F2F2F2;
     }
@@ -35,7 +40,10 @@ const PostSubject = styled.h2`
     margin: 10px 0;
 `;
 
-const PostBody = styled.div``;
+const PostBody = styled.div`
+    overflow: hidden;
+    word-break: break-all;
+`;
 
 const PostItem = ({post}) => {
     return(
