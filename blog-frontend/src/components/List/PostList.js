@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../common/Button';
 import styled from 'styled-components';
 import Tag from './Tag';
+import { Link } from 'react-router-dom';
 
 const PostListBlock = styled.div`
     padding-top: 30px;
@@ -36,7 +37,10 @@ const PostInfo = styled.div`
     font-size: 14px;
 `;
 
-const PostSubject = styled.h2`
+const PostSubject = styled(Link)`
+    display: block;
+    font-weight: bold;
+    font-size: 24px;
     margin: 10px 0;
 `;
 
@@ -50,7 +54,7 @@ const PostItem = ({post}) => {
         <PostItemBlock>
             <PostInfo>{new Date(post.publishedData).toLocaleDateString()}</PostInfo>
             <Tag key={`tag_${post.id}`} tags={post.tags}/>
-            <PostSubject>{post.title}</PostSubject>
+            <PostSubject to={`@${post.user.userid}/${post._id}`}>{post.title}</PostSubject>
             <PostBody>{post.body}</PostBody>
         </PostItemBlock>
     );

@@ -16,6 +16,8 @@ const PostHeader = styled.div`
 `;
 const PostBody = styled.div`
     min-height:400px;
+    overflow: hidden;
+    word-break: break-all;
 `;
 const PostFooter = styled.div`
     .tagList{

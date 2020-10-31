@@ -28,7 +28,7 @@ const QuillBlock = styled.div`
 
     .ql-editor{
         padding:0;
-        min-height:320px;
+        height: 450px;
         line-height:1.5;
         font-size:16px;
     }

@@ -40,7 +40,7 @@ const write = handleActions({
         ...state,
         [key]:value,
     }),
-    [INITIALIZE]:state=>initialState,
+    [INITIALIZE]:()=>initialState,
     [WRITE_POST]:(state)=>({
         ...state,
         post:null,

@@ -1,7 +1,7 @@
 import React from 'react';
 import WriteActionButton from '../../components/write/WriteActionButton';
 import { useSelector, useDispatch } from 'react-redux';
-import { writePost } from '../../modules/write';
+import { writePost,initialize } from '../../modules/write';
 import { withRouter } from 'react-router-dom';
 import { useEffect } from 'react';
 
