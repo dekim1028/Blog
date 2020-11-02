@@ -27,9 +27,7 @@ const ButtonStyle = css`
     }
 `;
 
-const ButtonBlock = styled.button`
-    ${ButtonStyle}
-
+const customStyle = css`
     ${props=>
         props.color1&&
         css`
@@ -39,6 +37,22 @@ const ButtonBlock = styled.button`
             }
         `
     }
+    ${props=>
+        props.color2&&
+        css`
+            background:#0B173B;
+            color:white;
+            &:hover{
+                background:#0B2161;
+            }
+        `
+    }
+`;
+
+const ButtonBlock = styled.button`
+    ${ButtonStyle}
+    ${customStyle}
+
     ${props=>
         props.width&&
         css`
@@ -55,6 +69,7 @@ const ButtonBlock = styled.button`
 
 const LinkBlock = styled(Link)`
     ${ButtonStyle}
+    ${customStyle}
 
     ${props=>
         props.width&&
