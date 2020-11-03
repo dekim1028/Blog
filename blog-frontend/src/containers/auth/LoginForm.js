@@ -45,14 +45,14 @@ const LoginForm = ({history}) => {
             return;
         }
         if(auth){
-            console.log("로그인 성공");
+            console.log("Success Login");
             dispatch(check());
         }
     },[authError,auth,dispatch]);
 
     useEffect(()=>{
         if(user){
-            console.log("CHECK api 성공");
+            console.log("Success CHECK api");
             alert(`${user.username}님 안녕하세요!`);
             history.push("/");
             try{

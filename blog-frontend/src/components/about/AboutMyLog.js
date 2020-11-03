@@ -18,7 +18,7 @@ const PageBlock = styled.div`
 
 const Page = styled.div`
     width: 50%;
-    height: 809px;
+    height: 810px;
     font-size:45px;
     font-weight:bold;
     font-family:MalgunGothic;
@@ -111,12 +111,11 @@ const AboutMyLog = () => {
             setCheckUp(false);
         }
 
-        if(movePage===-809){
+        if(movePage===-810){
             setCheckDown(true);
         }else{
             setCheckDown(false);
         }
-        console.log(checkUp,checkDown);
     },[movePage,checkUp,checkDown]);
 
     const changeState =()=>{
@@ -124,11 +123,11 @@ const AboutMyLog = () => {
     };
 
     const movePageDown = () =>{
-        setmovePage(movePage-809);
+        setmovePage(movePage-810);
     };
 
     const movePageUp = () =>{
-        setmovePage(movePage+809);
+        setmovePage(movePage+810);
     };
 
     return (
