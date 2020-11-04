@@ -2,6 +2,9 @@
 
 # dependencies
 Blog.code-workspace
+etc/
+blog-backend/node_modules/*
+blog-frontend/node_modules/*
 
 # misc
 .DS_Store
