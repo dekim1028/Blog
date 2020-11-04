@@ -5,6 +5,7 @@ import { viewPost } from '../../modules/view';
 import {withRouter} from 'react-router-dom';
 import ViewActionButton from '../../components/view/ViewActionButton';
 import { setOriginalPost } from '../../modules/write';
+import { removePost } from '../../lib/api/posts';
 
 const PostViewContainer = ({match,history}) => {
     const {postId} = match.params;
@@ -22,11 +23,17 @@ const PostViewContainer = ({match,history}) => {
     const onUpdate = () =>{
         dispatch(setOriginalPost(post));
         history.push("/write");
-    }
+    };
 
-    const onRemove = () =>{
-
-    }
+    const onRemove = async() =>{
+        try{
+            await removePost(postId);
+            alert("포스트가 삭제되었습니다.");
+            history.push("/");
+        }catch(e){
+            console.log(e);
+        }
+    };
 
     return (
         <PostView

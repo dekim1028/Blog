@@ -51,7 +51,7 @@ const WriteActionButtonContainer = ({history}) => {
     }
 
     return (
-        <WriteActionButton onPublish={onPublish} onCancle={onCancle}/>
+        <WriteActionButton onPublish={onPublish} onCancle={onCancle} isEdit={originalId}/>
     );
 };
 

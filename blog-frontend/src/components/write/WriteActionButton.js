@@ -10,10 +10,12 @@ const WriteActionButtonBlock = styled.div`
     }
 `;
 
-const WriteActionButton = ({onPublish,onCancle}) => {
+const WriteActionButton = ({onPublish,onCancle,isEdit}) => {
     return (
         <WriteActionButtonBlock>
-            <Button width="145px" onClick={onPublish}>포스트 저장</Button>
+            <Button width="145px" onClick={onPublish}>
+                포스트 {isEdit?"수정":"저장"}
+            </Button>
             <Button color1 width="65px" onClick={onCancle}>취소</Button>
         </WriteActionButtonBlock>
     );

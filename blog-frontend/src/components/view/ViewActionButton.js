@@ -1,6 +1,7 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled, {css} from 'styled-components';
 import Button from '../common/Button';
+import RemoveModal from './RemoveModal';
 
 const ActionButtonBlock = styled.div`
     display:flex;
@@ -30,12 +31,30 @@ const StyledButton2 = styled(Button)`
 `;
 
 const ViewActionButton = ({onUpdate,onRemove}) => {
+    const [modalVisible,setModalVisible] = useState(false);
+
+    const onRemoveClick = ()=>{
+        setModalVisible(true);
+    };
+
+    const onCancel = () =>{
+        setModalVisible(false);
+    };
+
+    const onConfirm = () =>{
+        setModalVisible(false);
+        onRemove();
+    };
+
     return (
-        <ActionButtonBlock>
-            <StyledButton1 to="/">목록</StyledButton1>
-            <StyledButton2 className="edit" onClick={onUpdate}>수정</StyledButton2>
-            <StyledButton2 className="delete" onClick={onRemove}>삭제</StyledButton2>
-        </ActionButtonBlock>
+        <>
+            <ActionButtonBlock>
+                <StyledButton1 to="/">목록</StyledButton1>
+                <StyledButton2 className="edit" onClick={onUpdate}>수정</StyledButton2>
+                <StyledButton2 className="delete" onClick={onRemoveClick}>삭제</StyledButton2>
+            </ActionButtonBlock>
+            <RemoveModal visible={modalVisible} onCancel={onCancel} onConfirm={onConfirm}/>
+        </>
     );
 };
 
