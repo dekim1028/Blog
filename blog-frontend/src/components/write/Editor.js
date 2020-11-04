@@ -64,6 +64,13 @@ const Editor = ({title,body,onChange}) => {
         })
     },[onChange]);
     
+    const mounted = useRef(false);
+    useEffect(()=>{
+        if(mounted.current) return;
+        mounted.current = true;
+        quillInstance.current.root.innerHTML=body;
+    },[body]);
+
     const onChangeTitle = e =>{
         onChange({key:'title',value:e.target.value});
     };

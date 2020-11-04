@@ -9,6 +9,7 @@ const PostHeader = styled.div`
     .title{
         border-bottom: 1px solid lightgray;
         margin: 0;
+        padding: 20px 0 10px;
     }
     .info{
         text-align: right;
@@ -36,7 +37,7 @@ const PostFooter = styled.div`
     }
 `;
 
-const PostView = ({post,error,loading}) => {
+const PostView = ({post,error,loading, actionButton}) => {
 
     if(error){
         return <PostViewBlock>에러가 발생하였습니다.</PostViewBlock>
@@ -50,6 +51,7 @@ const PostView = ({post,error,loading}) => {
 
     return (
         <PostViewBlock>
+            {actionButton}
             <PostHeader>
                 <h1 className="title">{title}</h1>
                 <p className="info">
@@ -62,6 +64,7 @@ const PostView = ({post,error,loading}) => {
                     {tags.map(tag=>(<li className="tagItem" key={tag} tag={tag}>#{tag}</li>))}
                 </ul>
             </PostFooter>
+            {actionButton}
         </PostViewBlock>
     );
 };
