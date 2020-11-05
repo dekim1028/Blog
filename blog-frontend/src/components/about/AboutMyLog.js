@@ -6,23 +6,28 @@ import cn from 'classnames';
 import Button from '../common/Button';
 
 const AboutMyLogBlock = styled.div`
-    height: 809px;
+    height: 100vh;
     overflow:hidden;
 `;
 
 const PageBlock = styled.div`
     display:flex;
     transition: 2.5s;
-    line-height: 700px;
+    line-height: 100vh;
+
+    @media (max-width:768px){
+        display:block;
+    }
 `;
 
 const Page = styled.div`
     width: 50%;
-    height: 810px;
+    height: 100vh;
     font-size:45px;
     font-weight:bold;
     font-family:MalgunGothic;
     padding:0 15px;
+
     ${props=>
         props.background&&
         css`
@@ -38,51 +43,73 @@ const Page = styled.div`
     }
     
     .title{
+        margin:0;
         font-size:35px;
     }
 
     .content{
+        margin:0;
         font-size:35px;
         line-height: 1.4;
-        padding-top: 300px;
+        padding-top: 45vh;
+    }
+
+    @media (max-width:768px){
+        width: 100vw;
+        height: 50vh;
+        font-size:30px;
+        padding:0;
+
+        &.left{
+            text-align: center;
+            line-height: 92vh;
+        }
+        &.right{
+            text-align: center;
+            line-height:10vh;
+        }
+
+        .title{
+            font-size:30px;
+        }
+        .content{
+            padding: 13px 0;
+            font-size:25px;
+        }
+
+        a{
+            margin: 0 auto;
+        }
+    }
+`;
+
+const FoldIconStyle = css`
+    position: absolute;
+    left: 48.8%;
+    font-size: 45px;
+    color: #D7D7D7;
+    transform: scaleX(1.8);
+    transition:1s;
+    z-index:1;
+
+    &.hide{
+        display:none;
     }
 `;
 
 const FoldDown = styled(VscFoldDown)`
-    position: absolute;
+    ${FoldIconStyle}
     top: 90%;
-    left: 48.8%;
-    font-size: 45px;
-    color: #D7D7D7;
-    transform: scaleX(1.8);
-    transition:1s;
-    z-index:1;
-
     &:hover{
         top: 93%;
-    }
-
-    &.hide{
-        display:none;
     }
 `;
 
 const FoldUp = styled(VscFoldUp)`
-    position: absolute;
+    ${FoldIconStyle}
     top: 13%;
-    left: 48.8%;
-    font-size: 45px;
-    color: #D7D7D7;
-    transform: scaleX(1.8);
-    transition:1s;
-    z-index:1;
-
     &:hover{
         top: 10%;
-    }
-
-    &.hide{
-        display:none;
     }
 `;
 
@@ -111,7 +138,7 @@ const AboutMyLog = () => {
             setCheckUp(false);
         }
 
-        if(movePage===-810){
+        if(movePage===-100){
             setCheckDown(true);
         }else{
             setCheckDown(false);
@@ -123,16 +150,16 @@ const AboutMyLog = () => {
     };
 
     const movePageDown = () =>{
-        setmovePage(movePage-810);
+        setmovePage(movePage-100);
     };
 
     const movePageUp = () =>{
-        setmovePage(movePage+810);
+        setmovePage(movePage+100);
     };
 
     return (
         <AboutMyLogBlock>
-            <PageBlock style={{marginTop:`${movePage}px`}}>
+            <PageBlock style={{marginTop:`${movePage}vh`}}>
                 <Page className="left" background="#ffffff">[{dateTextArr[targetNum]}]의 당신을</Page>
                 <Page className="right" background="#045FB4">[{verbTextArr[targetNum]}]하세요</Page>
             </PageBlock>

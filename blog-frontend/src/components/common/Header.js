@@ -8,6 +8,7 @@ const HeaderBlock = styled.div`
     width:100%;
     background-color:white;
     box-shadow: 0px 1px 3px rgb(0,0,0,0.2);
+    z-index:999;
 `;
 
 const Wrapper = styled.div`
@@ -21,12 +22,9 @@ const Wrapper = styled.div`
         font-size: 18px;
         font-weight:bold;
         letter-spacing:2px;
+        font-style:italic;
     }
 `;
-
-const Spacer = styled.div`
-    height: 60px;
-`
 
 const Header = ({user,onLogout}) => {
     return (
@@ -46,7 +44,6 @@ const Header = ({user,onLogout}) => {
                     
                 </Wrapper>
             </HeaderBlock>
-            <Spacer/>
         </>
     );
 };

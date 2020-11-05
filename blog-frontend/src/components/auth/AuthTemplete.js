@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const AuthTempleteBlock = styled.div`
     position: absolute;
@@ -21,16 +22,17 @@ const WhiteBox = styled.div`
     box-shadow:0 0 8px rgba(0,0,0,0.1);
 `;
 
-const Logo = styled.i`
+const Logo = styled(Link)`
     font-weight:bold;
     font-size:30px;
+    font-style:italic;
 `;
 
 const AuthTemplete = ({children}) => {
     return (
         <AuthTempleteBlock>
             <WhiteBox>
-                <Logo>My.log</Logo>
+                <Logo to="/">My.log</Logo>
                 {children}
             </WhiteBox>
         </AuthTempleteBlock>
