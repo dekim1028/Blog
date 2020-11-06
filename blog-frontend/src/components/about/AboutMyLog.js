@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import styled,{css} from 'styled-components';
 import { useEffect } from 'react';
-import {VscFoldDown, VscFoldUp} from 'react-icons/vsc';
+import {VscFoldUp, VscFoldDown} from 'react-icons/vsc';
 import cn from 'classnames';
 import Button from '../common/Button';
 
@@ -10,106 +10,106 @@ const AboutMyLogBlock = styled.div`
     overflow:hidden;
 `;
 
-const PageBlock = styled.div`
+
+const Page = styled.div`
+    width:100vw;
+    height:100vh;
     display:flex;
     transition: 2.5s;
-    line-height: 100vh;
 
     @media (max-width:768px){
         display:block;
     }
 `;
 
-const Page = styled.div`
-    width: 50%;
-    height: 100vh;
-    font-size:45px;
-    font-weight:bold;
-    font-family:MalgunGothic;
-    padding:0 15px;
-
-    ${props=>
-        props.background&&
-        css`
-            background:${props.background};
-        `
-    }
-
-    &.left{
-        text-align: right;
-    }
-    &.right{
-        color:white;
-    }
+const PageStyle = css`
+    width:50%;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 10px;
     
-    .title{
-        margin:0;
-        font-size:35px;
+    @media (max-width:768px){
+        width:100%;
+        height:50%;
+        justify-content: center;
+        padding: 10px 0;
     }
+`;
 
-    .content{
-        margin:0;
-        font-size:35px;
-        line-height: 1.4;
-        padding-top: 45vh;
-    }
+const LeftPage = styled.div`
+    ${PageStyle}
+    justify-content: flex-end;
+    background-color:white;
 
     @media (max-width:768px){
-        width: 100vw;
-        height: 50vh;
-        font-size:30px;
-        padding:0;
+        align-items: flex-end;
+    }
+`;
 
-        &.left{
-            text-align: center;
-            line-height: 92vh;
-        }
-        &.right{
-            text-align: center;
-            line-height:10vh;
-        }
+const RightPage = styled.div`
+    ${PageStyle}
+    background-color:#045FB4;
+    color:white;
 
-        .title{
-            font-size:30px;
-        }
+    @media (max-width:768px){
+        align-items: flex-start;
+
         .content{
-            padding: 13px 0;
-            font-size:25px;
+            width:100%;
+            a{
+                margin:0 auto;
+            }
         }
 
-        a{
-            margin: 0 auto;
+        .content_text{
+            text-align:center;
+            font-size:25px;
+            margin-bottom:10px;
         }
     }
 `;
 
-const FoldIconStyle = css`
+const GoToStartBtn = styled(Button)`
+    background:#0B173B;
+    color:white;
+    width: 150px;
+    margin-top: 10px;
+    &:hover{
+        background:#0B2161;
+    }
+`;
+
+const FoldStyle = css`
     position: absolute;
-    left: 48.8%;
+    transition:1s;
+    width: 100%;
     font-size: 45px;
     color: #D7D7D7;
-    transform: scaleX(1.8);
-    transition:1s;
-    z-index:1;
+    
+    path{
+        transform: scaleX(1.1);
+    }
 
     &.hide{
         display:none;
     }
 `;
 
-const FoldDown = styled(VscFoldDown)`
-    ${FoldIconStyle}
-    top: 90%;
-    &:hover{
-        top: 93%;
-    }
-`;
-
 const FoldUp = styled(VscFoldUp)`
-    ${FoldIconStyle}
+    ${FoldStyle}
     top: 13%;
     &:hover{
         top: 10%;
+    }
+`;
+
+const FoldDown = styled(VscFoldDown)`
+    ${FoldStyle}
+    top: 90%;
+    &:hover{
+        top: 93%;
     }
 `;
 
@@ -137,41 +137,47 @@ const AboutMyLog = () => {
         }else{
             setCheckUp(false);
         }
-
+        
         if(movePage===-100){
             setCheckDown(true);
         }else{
             setCheckDown(false);
         }
-    },[movePage,checkUp,checkDown]);
+    },[movePage]);
 
     const changeState =()=>{
         targetNum===0?setTargetNum(targetNum+1):setTargetNum(targetNum-1);
-    };
-
-    const movePageDown = () =>{
-        setmovePage(movePage-100);
     };
 
     const movePageUp = () =>{
         setmovePage(movePage+100);
     };
 
+    const movePageDown = () =>{
+        setmovePage(movePage-100);
+    };
+
     return (
         <AboutMyLogBlock>
-            <PageBlock style={{marginTop:`${movePage}vh`}}>
-                <Page className="left" background="#ffffff">[{dateTextArr[targetNum]}]의 당신을</Page>
-                <Page className="right" background="#045FB4">[{verbTextArr[targetNum]}]하세요</Page>
-            </PageBlock>
-            <PageBlock>
-                <Page className="left" background="#ffffff">
-                    <h1 className="title">My.Log란?</h1>
-                </Page>
-                <Page className="right" background="#045FB4">
-                    <h1 className="content">오늘의 하루를 기록할 수 있는<br/>블로그형 웹 사이트 입니다.</h1>
-                    <Button color2 width="130px" to="/login">바로 시작하기</Button>
-                </Page>
-            </PageBlock>
+            <Page style={{marginTop:`${movePage}vh`}}>
+                <LeftPage>
+                    [{dateTextArr[targetNum]}]의 당신을
+                </LeftPage>
+                <RightPage>
+                    [{verbTextArr[targetNum]}]하세요
+                </RightPage>
+            </Page>
+            <Page>
+                <LeftPage>
+                    My.Log란?
+                </LeftPage>
+                <RightPage>
+                    <div className="content">
+                        <div className="content_text">오늘의 하루를 기록할 수 있는<br/>블로그형 웹 사이트 입니다.</div>
+                        <GoToStartBtn to="/login">바로 시작하기</GoToStartBtn>
+                    </div>
+                </RightPage>
+            </Page>
             <FoldUp className={cn({hide:checkUp})} onClick={movePageUp}/>
             <FoldDown className={cn({hide:checkDown})} onClick={movePageDown}/>
         </AboutMyLogBlock>

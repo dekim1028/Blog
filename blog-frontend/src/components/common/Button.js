@@ -37,16 +37,6 @@ const customStyle = css`
             }
         `
     }
-    ${props=>
-        props.color2&&
-        css`
-            background:#0B173B;
-            color:white;
-            &:hover{
-                background:#0B2161;
-            }
-        `
-    }
 `;
 
 const ButtonBlock = styled.button`
