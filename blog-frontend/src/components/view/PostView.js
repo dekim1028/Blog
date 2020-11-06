@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Tag from '../List/Tag';
 
 const PostViewBlock = styled.div`
     padding: 60px 0;
@@ -10,6 +11,8 @@ const PostHeader = styled.div`
         border-bottom: 1px solid lightgray;
         margin: 0;
         padding: 20px 0 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .info{
         text-align: right;
@@ -21,20 +24,7 @@ const PostBody = styled.div`
     word-break: break-all;
 `;
 const PostFooter = styled.div`
-    .tagList{
-        list-style: none;
-        padding: 0;
-        display: flex;
-        align-items: center;
-    }
-    .tagItem{
-        color:#045FB4;
-        padding:0 5px;
-
-        &:hover{
-            color:#0174DF;
-        }
-    }
+    margin:10px 0;
 `;
 
 const PostView = ({post,error,loading, actionButton}) => {
@@ -60,9 +50,7 @@ const PostView = ({post,error,loading, actionButton}) => {
             </PostHeader>
             <PostBody dangerouslySetInnerHTML={{__html:body}}/>
             <PostFooter>
-                <ul className="tagList">
-                    {tags.map(tag=>(<li className="tagItem" key={tag} tag={tag}>#{tag}</li>))}
-                </ul>
+                <Tag tags={tags}/>
             </PostFooter>
             {actionButton}
         </PostViewBlock>

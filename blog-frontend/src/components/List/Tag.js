@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 const TagBlock = styled.div`
-    display:flex;
+    margin-top:5px;
 `;
 
 const TagItem = styled(Link)`
-    padding:10px 10px 0 0;
+    padding-right:10px;
     color:#045FB4;
+    display: inline-block;
+    word-break: break-all;
     &:hover{
         color: #0174DF;
     }

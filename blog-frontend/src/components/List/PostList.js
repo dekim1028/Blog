@@ -44,6 +44,9 @@ const PostSubject = styled(Link)`
     font-weight: bold;
     font-size: 24px;
     margin: 10px 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 const PostBody = styled.div`

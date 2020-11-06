@@ -36,10 +36,11 @@ const TagBoxInput = styled.input`
 
 const TagList = styled.div`
     padding:10px 0;
-    display: flex;
 `;
 
 const TagListItem = styled.div`
+    display:inline-block;
+    word-break: break-all;
     color:#848484;
     padding:0 5px;
 
