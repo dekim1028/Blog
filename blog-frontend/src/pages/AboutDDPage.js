@@ -1,14 +1,14 @@
 import React from 'react';
 import HeaderContainer from '../containers/common/HeaderContainer';
-import AboutMyLog from '../components/about/AboutMyLog';
+import AboutDD from '../components/about/AboutDD';
 
-const AboutMyLogPage = () => {
+const AboutDDPage = () => {
     return (
         <>
             <HeaderContainer/>
-            <AboutMyLog/>
+            <AboutDD/>
         </>
     );
 };
 
-export default AboutMyLogPage;
+export default AboutDDPage;

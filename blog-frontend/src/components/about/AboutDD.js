@@ -5,11 +5,10 @@ import {VscFoldUp, VscFoldDown} from 'react-icons/vsc';
 import cn from 'classnames';
 import Button from '../common/Button';
 
-const AboutMyLogBlock = styled.div`
+const AboutDDBlock = styled.div`
     height: 100vh;
     overflow:hidden;
 `;
-
 
 const Page = styled.div`
     width:100vw;
@@ -113,7 +112,7 @@ const FoldDown = styled(VscFoldDown)`
     }
 `;
 
-const AboutMyLog = () => {
+const AboutDD = () => {
     const dateTextArr = ["오늘","어제"];
     const verbTextArr = ["기록","추억"];
     const [targetNum,setTargetNum] = useState(0);
@@ -158,7 +157,7 @@ const AboutMyLog = () => {
     };
 
     return (
-        <AboutMyLogBlock>
+        <AboutDDBlock>
             <Page style={{marginTop:`${movePage}vh`}}>
                 <LeftPage>
                     [{dateTextArr[targetNum]}]의 당신을
@@ -169,19 +168,19 @@ const AboutMyLog = () => {
             </Page>
             <Page>
                 <LeftPage>
-                    My.Log란?
+                    D.D란?
                 </LeftPage>
                 <RightPage>
                     <div className="content">
-                        <div className="content_text">오늘의 하루를 기록할 수 있는<br/>블로그형 웹 사이트 입니다.</div>
+                        <div className="content_text">Daily Diary를 기록할 수 있는<br/>블로그형 웹 사이트 입니다.</div>
                         <GoToStartBtn to="/login">바로 시작하기</GoToStartBtn>
                     </div>
                 </RightPage>
             </Page>
             <FoldUp className={cn({hide:checkUp})} onClick={movePageUp}/>
             <FoldDown className={cn({hide:checkDown})} onClick={movePageDown}/>
-        </AboutMyLogBlock>
+        </AboutDDBlock>
     );
 };
 
-export default AboutMyLog;
+export default AboutDD;

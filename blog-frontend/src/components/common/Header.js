@@ -32,7 +32,7 @@ const Header = ({user,onLogout}) => {
             <HeaderBlock>
                 <Wrapper>
                     <Link className="logo" to="/">
-                        {user?user.username:"My"}.log
+                        D.D
                     </Link>
                     {
                         user?(

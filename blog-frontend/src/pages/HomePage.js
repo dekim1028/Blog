@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PostListPage from './PostListPage';
-import AboutMyLogPage from './AboutMyLogPage';
+import AboutDDPage from './AboutDDPage';
 
 const HomePage = () => {
     const {user} = useSelector(({user})=>({
@@ -14,7 +14,7 @@ const HomePage = () => {
         );
     }else{
         return (
-            <AboutMyLogPage/>
+            <AboutDDPage/>
         );
     }
 };
