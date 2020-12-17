@@ -10,3 +10,5 @@ My own diary that records today and remembers yesterday
 + Back-end : node.js, mongoDB
 
 ### **Screenshots**
+![screenshot_main](./screenshot/main.png)
+![screenshot_post](./screenshot/post.png)
