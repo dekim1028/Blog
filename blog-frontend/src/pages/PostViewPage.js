@@ -4,15 +4,14 @@ import PostViewContainer from '../containers/view/PostViewContainer';
 import Responsive from '../components/common/Responsive';
 
 const PostViewPage = () => {
-    return (
-        <>
-            <HeaderContainer/>
-            <Responsive>
-                <PostViewContainer/>
-            </Responsive>
-            
-        </>
-    );
+	return (
+		<>
+			<HeaderContainer />
+			<Responsive>
+				<PostViewContainer />
+			</Responsive>
+		</>
+	);
 };
 
 export default PostViewPage;

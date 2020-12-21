@@ -5,73 +5,71 @@ import { changeField, initializeForm, login } from '../../modules/auth';
 import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 
-const LoginForm = ({history}) => {
-    const [error, setError] = useState('');
-    const dispatch = useDispatch();
+const LoginForm = ({ history }) => {
+	const [error, setError] = useState('');
+	const dispatch = useDispatch();
 
-    const {form, auth, authError, user} = useSelector(({auth,user})=>({
-        form:auth.login,
-        auth:auth.auth,
-        authError:auth.authError,
-        user:user.user,
-    }));
+	const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
+		form: auth.login,
+		auth: auth.auth,
+		authError: auth.authError,
+		user: user.user,
+	}));
 
-    const onChange = e =>{
-        const {name, value} = e.target;
-        dispatch(
-            changeField({
-                form:'login',
-                key:name,
-                value
-            })
-        );
-    };
+	const onChange = (e) => {
+		const { name, value } = e.target;
+		dispatch(
+			changeField({
+				form: 'login',
+				key: name,
+				value,
+			}),
+		);
+	};
 
-    const onSubmit = e =>{
-        e.preventDefault();
-        const {userid,password} = form;
-        dispatch(login({userid,password}));
-    };
+	const onSubmit = (e) => {
+		e.preventDefault();
+		const { userid, password } = form;
+		dispatch(login({ userid, password }));
+	};
 
-    useEffect(()=>{
-        dispatch(
-            initializeForm('login')
-        );
-    },[dispatch]);
+	useEffect(() => {
+		dispatch(initializeForm('login'));
+	}, [dispatch]);
 
-    useEffect(()=>{
-        if(authError){
-            setError("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
-            return;
-        }
-        if(auth){
-            console.log("Success Login");
-            dispatch(check());
-        }
-    },[authError,auth,dispatch]);
+	useEffect(() => {
+		if (authError) {
+			setError('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
+			return;
+		}
+		if (auth) {
+			console.log('Success Login');
+			dispatch(check());
+		}
+	}, [authError, auth, dispatch]);
 
-    useEffect(()=>{
-        if(user){
-            console.log("Success CHECK api");
-            alert(`${user.username}님 안녕하세요!`);
-            history.push("/");
-            try{
-                localStorage.setItem("user",JSON.stringify(user));
-            }catch(e){
-                console.log("localStorage is not working");
-            }
-        }
-    },[user,history]);
+	useEffect(() => {
+		if (user) {
+			console.log('Success CHECK api');
+			alert(`${user.username}님 안녕하세요!`);
+			history.push('/');
+			try {
+				localStorage.setItem('user', JSON.stringify(user));
+			} catch (e) {
+				console.log('localStorage is not working');
+			}
+		}
+	}, [user, history]);
 
-    return (
-        <AuthForm
-            type="login"
-            form={form}
-            onChange={onChange}
-            onSubmit={onSubmit}
-            error={error}
-        />
-    );
+	return (
+		<AuthForm
+			type="login"
+			form={form}
+			onChange={onChange}
+			onSubmit={onSubmit}
+			error={error}
+		/>
+	);
 };
 
 export default withRouter(LoginForm);

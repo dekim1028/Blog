@@ -5,15 +5,15 @@ import PostListContainer from '../containers/list/PostListContainer';
 import PaginationContainer from '../containers/list/PaginationContainer';
 
 const PostListPage = () => {
-    return (
-        <>
-            <HeaderContainer/>
-            <Responsive>
-                <PostListContainer/>
-                <PaginationContainer/>
-            </Responsive>
-        </>
-    );
+	return (
+		<>
+			<HeaderContainer />
+			<Responsive>
+				<PostListContainer />
+				<PaginationContainer />
+			</Responsive>
+		</>
+	);
 };
 
 export default PostListPage;

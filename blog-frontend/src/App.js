@@ -8,15 +8,15 @@ import PostWritePage from './pages/PostWritePage';
 import HomePage from './pages/HomePage';
 
 const App = () => {
-  return (
-    <>
-      <Route component={HomePage} path={["/@:username","/"]} exact/>
-      <Route component={LoginPage} path="/login"/>
-      <Route component={SignUpPage} path="/signup"/>
-      <Route component={PostViewPage} path="/@:username/:postId"/>
-      <Route component={PostWritePage} path="/write"/>
-    </>
-  );
+	return (
+		<>
+			<Route component={HomePage} path={['/@:username', '/']} exact />
+			<Route component={LoginPage} path="/login" />
+			<Route component={SignUpPage} path="/signup" />
+			<Route component={PostViewPage} path="/@:username/:postId" />
+			<Route component={PostWritePage} path="/write" />
+		</>
+	);
 };
 
 export default App;

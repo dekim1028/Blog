@@ -6,16 +6,16 @@ import WriteActionButtonContainer from '../containers/write/WriteActionButtonCon
 import HeaderContainer from '../containers/common/HeaderContainer';
 
 const PostWritePage = () => {
-    return (
-        <>
-            <HeaderContainer/>
-            <Responsive>
-                <EditorContainer/>
-                <TagBoxContainer/>
-                <WriteActionButtonContainer/>
-            </Responsive>
-        </>
-    );
+	return (
+		<>
+			<HeaderContainer />
+			<Responsive>
+				<EditorContainer />
+				<TagBoxContainer />
+				<WriteActionButtonContainer />
+			</Responsive>
+		</>
+	);
 };
 
 export default PostWritePage;
